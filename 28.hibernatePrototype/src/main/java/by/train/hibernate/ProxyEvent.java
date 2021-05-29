@@ -1,6 +1,6 @@
-package by.hibernate;
+package by.train.hibernate;
 
-import by.model.Event;
+import by.train.model.Event;
 
 /**
  * Proxy класс сгенерированный нашим hibernate прототипом.

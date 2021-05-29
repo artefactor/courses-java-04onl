@@ -1,6 +1,6 @@
-package by.hibernate;
+package by.train.hibernate;
 
-import by.model.Event;
+import by.train.model.Event;
 
 import java.util.HashMap;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package by.hibernate;
+package by.train.hibernate;
 
 public class SessionFactory {
 	private Session currentSession;

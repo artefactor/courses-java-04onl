@@ -1,4 +1,4 @@
-package by.hibernate;
+package by.train.hibernate;
 
 /**
  * класс, который будет возвращать SessionFactory

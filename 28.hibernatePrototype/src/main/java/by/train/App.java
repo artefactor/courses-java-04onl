@@ -1,10 +1,10 @@
-package by;
+package by.train;
 
-import by.hibernate.HibernateUtils;
-import by.hibernate.Session;
-import by.hibernate.SessionFactory;
-import by.hibernate.Transaction;
-import by.model.Event;
+import by.train.hibernate.HibernateUtils;
+import by.train.hibernate.Session;
+import by.train.hibernate.SessionFactory;
+import by.train.hibernate.Transaction;
+import by.train.model.Event;
 
 /**
  * emulate hibernate interactions
