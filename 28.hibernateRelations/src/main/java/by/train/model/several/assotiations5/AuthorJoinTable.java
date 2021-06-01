@@ -4,6 +4,7 @@ import by.train.model.several.assotiations.Author;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,9 +16,16 @@ public class AuthorJoinTable implements Author {
 	String name;
 
 	@OneToMany(fetch = FetchType.EAGER,
-			mappedBy = "theAuthor", cascade = {CascadeType.ALL}
+			//mappedBy = "theAuthor",
+			cascade = {CascadeType.ALL}
 	)
+	@JoinTable(name = "A5_Author_Book",
+			joinColumns = @JoinColumn(name = "author_id"),
+			inverseJoinColumns = @JoinColumn(name = "books_id"))
 	Set<BookJoinTable> books = new HashSet<BookJoinTable>();
+
+	//@OrderColumn(name = )
+	List<BookJoinTable> booksList;
 
 	public AuthorJoinTable() {
 	}

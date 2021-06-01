@@ -14,11 +14,10 @@ public class BookJoinTable implements Book {
 	String title;
 
 	@ManyToOne(
-			optional = false
+			targetEntity = AuthorJoinTable.class
 			, fetch = FetchType.LAZY,   // in this way not working for this type of association :(
 			cascade = {CascadeType.ALL}
 	)
-	@JoinTable(name = "A5_Author_Book", joinColumns = @JoinColumn(name = "author_id"), inverseJoinColumns = @JoinColumn(name = "books_id"))
 	AuthorJoinTable theAuthor;
 
 	public BookJoinTable() {
