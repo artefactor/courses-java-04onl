@@ -18,6 +18,8 @@
 		<!-- Echo all executed SQL to stdout for debugging -->
 		<property name="show_sql">true</property>
 		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.highlight_sql">true</property>
+<!--		<property name="use_sql_comments">true</property>-->
 
 		<!-- All the entity classes for hibernate to check for annotations here -->
 

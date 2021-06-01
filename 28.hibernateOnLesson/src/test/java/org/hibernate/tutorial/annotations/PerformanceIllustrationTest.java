@@ -30,7 +30,9 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import train.model.Event;
+import train.model.Product;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -67,21 +69,35 @@ public class PerformanceIllustrationTest extends TestCase {
 	}
 
 
-	public void testPerformance() {
-		int count = 120;
-		insertManyObjects(count);
-		Session session = sessionFactory.openSession();
-		printMemory();
-		boolean readOnly = true;
-		List<Event> from_event = session.createQuery("from Event")
-				.setReadOnly(readOnly).list();
+	public void testPerformance() throws InterruptedException {
+		boolean readOnly = false;
+		int count = 3000;
 
-		System.out.println("readed " + from_event.size() + " objects with readOnly mode  " + readOnly + " :");
+		insertManyEvents(count);
+		System.gc();
+		Session session = sessionFactory.openSession();
+		System.gc();
 		printMemory();
+		System.gc();
+		Thread.sleep(1000);
+
+		session.setDefaultReadOnly(readOnly);
+		List<Product> list = session.createQuery("from Product").setReadOnly(readOnly).list();
+		System.out.println("readed " + list.size() + " objects with readOnly mode  " + readOnly + " :");
+		System.gc();
+		printMemory();
+		List<Product> updatedList = new ArrayList<>();
+
 		System.out.println("update objects");
-		from_event.forEach(t -> {
-			t.setTitle("new Title" + Math.random() + t.getTopic());
+		list.forEach(t -> {
+//			t.setTitle("new Title" + Math.random() + t.getTopic());
+			Product e = session.get(Product.class, t.getId());
+			e.setB((long) (Math.random() * 100000L));
+			updatedList.add(e);
+//			System.out.println(t.getId());
 		});
+		System.out.println(updatedList.size());
+
 		printMemory();
 	}
 
@@ -89,16 +105,34 @@ public class PerformanceIllustrationTest extends TestCase {
 		Runtime rt = Runtime.getRuntime();
 		long total = rt.totalMemory() / 1024 / 1024;
 		long free = rt.freeMemory() / 1024 / 1024;
-		String format = String.format("Total: %s mb, Free: %s , Usage: %s ,  mb", total, free, total-free);
+		String format = String.format("Total: %s mb, Free: %s , Usage: %s ,  mb", total, free, total - free);
 		System.out.println(format);
 	}
 
-	private void insertManyObjects(int count) {
+	private void insertManyEvents(int count) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		for (int i = 0; i < count; i++) {
-			Event object = new Event("very long name of this event. very long name of this event. very long name of this event. Event_" + i, new Date());
-			object.setTopic("very long topic of this event. very long topic of this event. very long topic of this event.");
+			Event object = new Event("very long " +
+					"name of this event." + Math.random() +
+					" very long name of this event" +
+					". very long name " + i +
+					"of this event. Event_" + i, new Date());
+			object.setTopic("very long topic of this event. " +
+					"very long topic of this event. " + i +
+					"very long topic of this event.");
+			session.save(object);
+		}
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	private void insertManyProducts(int count) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		for (int i = 0; i < count; i++) {
+			Product object = new Product();
+			object.setB((long) (Math.random() * 100000));
 			session.save(object);
 		}
 		session.getTransaction().commit();

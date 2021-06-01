@@ -40,6 +40,7 @@
 
         <!-- Names the annotated entity class -->
         <mapping class="train.model.Event"/>
+        <mapping class="train.model.Product"/>
 
     </session-factory>
 

@@ -5,6 +5,8 @@ import by.train.model.several.assotiations.Author;
 import by.train.model.several.assotiations.Book;
 import by.train.model.several.assotiations1.AuthorBookTransient;
 import by.train.model.several.assotiations1.BookManyToOne;
+import by.train.model.several.assotiations5.AuthorJoinTable;
+import by.train.model.several.assotiations5.BookJoinTable;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -66,16 +68,19 @@ public class AnnTestAssociationsBooks {
 
 	@Test
 	public void testSearchAuthorThenBooks() {
-
-		Author author = session.get(AuthorBookTransient.class, authorIds.get(0));
+		// TODO correct mapping
+		Author author = session.get(AuthorJoinTable.class, authorIds.get(0));
 		log("3.     author : %s, %s", author.getClass(), author);
+		session.close();   // check with LAZY or EAGER
 		log("4. author books : %s, %s", author.getBooks().getClass(), author.getBooks());
 
-		assertEquals(AuthorBookTransient.class, author.getClass());
+		assertEquals(AuthorJoinTable.class, author.getClass());
 		assertEquals(PersistentSet.class, author.getBooks().getClass());
 	}
 
-
+	/**
+	 *
+	 */
 	@Test
 	public void testSearchBookThenAuthor() {
 		Book book = session.get(BookManyToOne.class, bookIds.get(0));
@@ -118,12 +123,12 @@ public class AnnTestAssociationsBooks {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 
-		AuthorBookTransient author1 = new AuthorBookTransient(2, "Harper Lee");
-		BookManyToOne book1 = new BookManyToOne(10, "To Kill a Mockingbird");
-		AuthorBookTransient author2 = new AuthorBookTransient(4, "Poul Anderson");
+		AuthorJoinTable author1 = new AuthorJoinTable(2, "Harper Lee");
+		BookJoinTable book1 = new BookJoinTable(10, "To Kill a Mockingbird");
 
-		BookManyToOne book2 = new BookManyToOne(30, "The Corridors of Time");
-		BookManyToOne book3 = new BookManyToOne(50, "Time Patrol");
+		AuthorJoinTable author2 = new AuthorJoinTable(4, "Poul Anderson");
+		BookJoinTable book2 = new BookJoinTable(30, "The Corridors of Time");
+		BookJoinTable book3 = new BookJoinTable(50, "Time Patrol");
 
 /*  simplified
 		book1.setAuthor(author1);
