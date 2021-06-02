@@ -2,6 +2,8 @@ package com.example.servlet.servlet;
 
 import com.example.servlet.entity.ProductEntity;
 import com.example.servlet.repository.ProductRepository;
+import com.example.servlet.repository.ProductRepositoryFactory;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +26,7 @@ public class CatalogServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        productRepository = ProductRepository.getInstance();
+        productRepository = ProductRepositoryFactory.getRepositoryInstance();
     }
 
     @Override
