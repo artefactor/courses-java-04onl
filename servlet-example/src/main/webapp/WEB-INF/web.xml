@@ -12,6 +12,10 @@
         <param-name>password</param-name>
         <param-value>admin</param-value>
     </context-param>
+    <context-param>
+        <param-name>db_approach</param-name>
+        <param-value>JPA</param-value>
+    </context-param>
 <!--в старых версиях томката писали так, теперь работают аннотации  -->
 <!--    <servlet>-->
 <!--        <servlet-name>admin</servlet-name>-->
