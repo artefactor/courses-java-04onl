@@ -53,12 +53,13 @@ public class Calculator {
     private ISimpleOperation resolveOperation() {
         ISimpleOperation simpleOperation = null;
         while (simpleOperation == null) {
-            String operation = calculatorUtils.readStringValue("Enter operation (available operations: +,-,*,/): ");
+            // TODO move operation descriptions to factory
+            String operation = calculatorUtils.readStringValue("Enter operation (available operations: +, -, *, / ): ");
             simpleOperation = calculatorOperationFactory.defineOperation(operation);
 //            try {
-//                simpleOperation = context.getBean("operation" + opetation, ISimpleOperation.class);
+//                simpleOperation = context.getBean("operation" + operation, ISimpleOperation.class);
 //            } catch (BeansException e) {
-//                 System.out.println("Wrong operation type entered, available operations: +,-,/,*");
+//                System.out.println("Wrong operation type entered, available operations: +,-,/,*");
 //            }
         }
         return simpleOperation;

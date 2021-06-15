@@ -9,6 +9,9 @@ public class CalculatorEngineeringFactory implements ICalculatorOperationFactory
 
 	// TODO нужно сюда добавить еще и другие операции
 	public ISimpleOperation defineOperation(String operation) {
-		return new LogarithmOperation();
+		if ("log".equals(operation)){
+			return new LogarithmOperation();
+		}
+		return null;
 	}
 }
