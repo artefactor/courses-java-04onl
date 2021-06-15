@@ -1,13 +1,17 @@
 package by.teachmeskills.util;
 
+import org.springframework.stereotype.Component;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+//TODO show final
+@Component
 public final class CalculatorUtils {
 	private CalculatorUtils() {
 	}
 
-	public static int readIntValue(String message) {
+	public int readIntValue(String message) {
 		while (true) {
 			final Scanner scanner = new Scanner(System.in);
 			System.out.println(message);
@@ -19,7 +23,7 @@ public final class CalculatorUtils {
 		}
 	}
 
-	public static String readStringValue(String message) {
+	public String readStringValue(String message) {
 		String result;
 		while (true) {
 			final Scanner scanner = new Scanner(System.in);
@@ -30,7 +34,7 @@ public final class CalculatorUtils {
 		return result;
 	}
 
-	static public boolean readBooleanValue(String message) {
+	public boolean readBooleanValue(String message) {
 		while (true) {
 			final Scanner scanner = new Scanner(System.in);
 			System.out.println(message);

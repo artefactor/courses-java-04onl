@@ -2,6 +2,7 @@ package by.teachmeskills.calculator;
 
 import by.teachmeskills.opetation.ISimpleOperation;
 import by.teachmeskills.util.CalculatorUtils;
+import org.springframework.stereotype.Component;
 
 import java.text.DecimalFormat;
 
@@ -11,21 +12,38 @@ import java.text.DecimalFormat;
 //import org.springframework.context.ApplicationContext;
 //import org.springframework.stereotype.Component;
 
+@Component
 public class Calculator {
 
     private boolean isOpen = false;
 
+    private ICalculatorOperationFactory calculatorOperationFactory;
+    private CalculatorUtils calculatorUtils;
+    //    private ApplicationContext context;
+
+//    @Autowired
+    public Calculator( ICalculatorOperationFactory factory, CalculatorUtils calculatorUtils) {
+        this.calculatorOperationFactory = factory;
+        this.calculatorUtils = calculatorUtils;
+        System.out.println("Factory is used: " + calculatorOperationFactory);
+    }
+
+
+    //    @Autowired
+    public void setCalculatorOperationFactory(ICalculatorOperationFactory calculatorOperationFactory) {
+        this.calculatorOperationFactory = calculatorOperationFactory;
+    }
 
     public void run() {
         isOpen = true;
         while (isOpen) {
-            final int a = CalculatorUtils.readIntValue("Enter first number: ");
-            final int b = CalculatorUtils.readIntValue("Enter second number: ");
+            final int a = calculatorUtils.readIntValue("Enter first number: ");
+            final int b = calculatorUtils.readIntValue("Enter second number: ");
             final ISimpleOperation simpleOperation = resolveOperation();
             final double result = simpleOperation.process(a, b);
             System.out.printf("Result is: " + new DecimalFormat("#0.00").format(result) + "\n");
             System.out.println("=======================================================");
-            final boolean isContinue = CalculatorUtils.readBooleanValue("Continue? (true/false)");
+            final boolean isContinue = calculatorUtils.readBooleanValue("Continue? (true/false)");
             if (!isContinue) {
                 setOpen(false);
             }
@@ -35,8 +53,9 @@ public class Calculator {
     private ISimpleOperation resolveOperation() {
         ISimpleOperation simpleOperation = null;
         while (simpleOperation == null) {
-            String operation = CalculatorUtils.readStringValue("Enter opetation (available operations: +,-,*,/): ");
-            simpleOperation = CalculatorOperationFactory.defineOperation(operation);
+            // TODO move operation descriptions to factory
+            String operation = calculatorUtils.readStringValue("Enter operation (available operations: +, -, *, / ): ");
+            simpleOperation = calculatorOperationFactory.defineOperation(operation);
 //            try {
 //                simpleOperation = context.getBean("operation" + operation, ISimpleOperation.class);
 //            } catch (BeansException e) {
