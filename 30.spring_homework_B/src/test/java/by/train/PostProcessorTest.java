@@ -12,15 +12,17 @@ import static org.junit.Assert.assertEquals;
 public class PostProcessorTest {
 	private int amount = 28;
 	private int amountAfterFirstEat = 18;
-	private int amountAfterSecondEat = 18;
+	private  int amountAfterSecondEat = 18;
 
-	private Meat meat = new Meat(amount);
+	private  Meat meat = new Meat(amount);
 
 	private void testCallSuccess(ApplicationContext context) {
 		// given
 		Lion lion = context.getBean(Lion.class);
+		System.out.println(lion);
 		// when
 		lion.eat(meat);
+
 		// then
 		assertEquals(amountAfterFirstEat, meat.getAmount());
 	}
@@ -33,10 +35,14 @@ public class PostProcessorTest {
 	@Test(expected = UnsupportedOperationException.class)
 	public void lion_withoutBeanPostProcessor2() {
 		// given
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		ApplicationContext context =
+				new AnnotationConfigApplicationContext(AppConfig.class);
 		Lion lion = context.getBean(Lion.class);
+		System.out.println(lion);
 		// when
+
 		lion.eat(meat);
+
 		lion.eat(meat);
 		// then fails
 		assertEquals(amountAfterSecondEat, meat.getAmount());
@@ -46,19 +52,23 @@ public class PostProcessorTest {
 
 	@Test
 	public void lion_beanPostProcessor() {
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class, PostProcessorConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class,
+				PostProcessorConfig.class);
 		testCallSuccess(context);
 	}
 
 	@Test
 	public void lion_beanPostProcessorNoException() {
 		// given
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class, PostProcessorConfig.class);
+		ApplicationContext context = new AnnotationConfigApplicationContext(
+				AppConfig.class, PostProcessorConfig.class);
 		Lion lion = context.getBean(Lion.class);
 
 		// when
 		lion.eat(meat);
+
 		lion.eat(meat);
+
 		// then
 		assertEquals(amountAfterSecondEat, meat.getAmount());
 	}

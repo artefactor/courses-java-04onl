@@ -1,5 +1,8 @@
 package by.train.animal.model;
 
+import org.springframework.stereotype.Component;
+
+
 public class Meat {
 	private int amount;
 

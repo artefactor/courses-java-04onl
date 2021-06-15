@@ -1,25 +1,35 @@
 package by.train;
 
 import by.train.animal.model.Fox;
+import by.train.animal.model.domestic.Horse;
+import by.train.animal.model.domestic.Pig;
+import by.train.animal.model.rare.Jaguar;
+import by.train.bpp.PostProcessorConfig;
 import by.train.browser.Firefox;
 import by.train.car.JaguarCar;
+import by.train.zoo.Config;
 import org.springframework.context.annotation.*;
 
 @Configuration
-@ComponentScan(
-		/* TODO нужно добавить сюда нужные конфигурации
-		 *  при этом исключить пакет by.train.animal.model.domestic
-		 */
+@ComponentScan(basePackages = {"by.train.browser", "by.train.car"}
+        /* TODO нужно добавить сюда нужные конфигурации
+         *  при этом исключить пакет by.train.animal.model.domestic
+         */
 )
 
-@Import(value = {
+@Import(value = {Config.class, by.train.animal.Config.class
+
 //		TODO нужно добавить сюда нужные конфигурации
 })
 
-//TODO подключить конфиг linux.xml
-//TODO подключить common.properties
+////TODO подключить конфиг linux.xml
+////TODO подключить common.properties
 /**
  * общий конфиг
  */
+@PropertySource("classpath:common.properties")
+@ImportResource({"classpath:linux.xml"})
 public class AppConfig {
+
+
 }

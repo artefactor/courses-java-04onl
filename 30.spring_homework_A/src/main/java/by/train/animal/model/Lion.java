@@ -14,13 +14,22 @@ public class Lion extends Animal {
 		return age;
 	}
 
+	public boolean isHungry() {
+		return hungry;
+	}
+
+	public void setHungry(boolean hungry) {
+		this.hungry = hungry;
+	}
+
 	@Override
 	public void eat(Meat meat) {
 		// ест 10 кг первый раз, второй раз уже не может
-		if (!hungry) {
+		if (!this.hungry) {
 			throw new UnsupportedOperationException("I am not hungry");
 		}
 		meat.setAmount(meat.getAmount() - 10);
-		hungry = false;
+		hungry=false;
+
 	}
 }

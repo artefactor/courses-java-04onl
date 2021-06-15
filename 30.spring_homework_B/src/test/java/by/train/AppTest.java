@@ -22,53 +22,55 @@ import static org.junit.Assert.*;
  */
 public class AppTest {
 
-	ApplicationContext context =
-			new AnnotationConfigApplicationContext(AppConfig.class);
+    ApplicationContext context =
+            new AnnotationConfigApplicationContext(AppConfig.class);
 
-	@Test
-	public void firefox_annotationConfig() {
-		Firefox firefox = context.getBean(Firefox.class);
-		assertTrue(firefox.getLogo() instanceof Fox);
-	}
+    @Test
+    public void firefox_annotationConfig() {
+        Firefox firefox = context.getBean(Firefox.class);
 
-	@Test
-	public void linux_xmlConfig() {
-		Linux os = context.getBean(Linux.class);
-		assertTrue(os.getLogo() instanceof Penguin);
-	}
+        assertTrue(firefox.getLogo() instanceof Fox);
+    }
 
-	@Test
-	public void jaguar_factoryBean() {
-		JaguarCar car = context.getBean(JaguarCar.class);
-		assertTrue(car.getLogo() instanceof Jaguar);
-	}
+    @Test
+    public void linux_xmlConfig() {
+        Linux os = context.getBean(Linux.class);
+        assertTrue(os.getLogo() instanceof Penguin);
+    }
 
-	@Test
-	public void zoo_BeansOfType() {
-		Zoo os = context.getBean(Zoo.class);
-		assertEquals(4, os.getAnimals().size());
-	}
+    @Test
+    public void jaguar_factoryBean() {
+        JaguarCar car = context.getBean(JaguarCar.class);
+        assertTrue(car.getLogo() instanceof Jaguar);
+    }
 
-	@Test
-	public void scope() {
-		Firefox firefox1 = context.getBean(Firefox.class);
-		Firefox firefox2 = context.getBean(Firefox.class);
-		Fox fox1 = context.getBean(Fox.class);
-		Fox fox2 = context.getBean(Fox.class);
+    @Test
+    public void zoo_BeansOfType() {
+        Zoo os = context.getBean(Zoo.class);
+        assertEquals(4, os.getAnimals().size());
+    }
 
-		assertEquals(fox1, fox2);
-		assertSame(fox1, fox2);
-		assertNotEquals(firefox1, firefox2);
-	}
+    @Test
+    public void scope() {
+        Firefox firefox1 = context.getBean(Firefox.class);
+        Firefox firefox2 = context.getBean(Firefox.class);
+        Fox fox1 = context.getBean(Fox.class);
+        Fox fox2 = context.getBean(Fox.class);
+
+        assertEquals(fox1, fox2);
+        assertSame(fox1, fox2);
+        assertNotEquals(firefox1, firefox2);
+    }
 
 
-	@Test
-	public void properties() {
-		assertEquals("expectedReadedValue", context.getEnvironment().getProperty("prop"));
+    @Test
+    public void properties() {
+        assertEquals("expectedReadedValue",
+                context.getEnvironment().getProperty("prop"));
 
-		Lion lion = context.getBean(Lion.class);
-		assertEquals(20, lion.getAge());
-	}
+        Lion lion = context.getBean(Lion.class);
+        assertEquals(20, lion.getAge());
+    }
 
 
 }
