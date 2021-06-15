@@ -1,45 +1,48 @@
 package by.teachmeskills.util;
 
+import org.springframework.stereotype.Component;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+//TODO show final
+@Component
 public final class CalculatorUtils {
-	private CalculatorUtils() {
-	}
+     private CalculatorUtils() {
+    }
 
-	public static int readIntValue(String message) {
-		while (true) {
-			final Scanner scanner = new Scanner(System.in);
-			System.out.println(message);
-			try {
-				return scanner.nextInt();
-			} catch (InputMismatchException e) {
-				System.out.println("Invalid input, expecting number");
-			}
-		}
-	}
+    public int readIntValue(String message) {
+        while (true) {
+            final Scanner scanner = new Scanner(System.in);
+            System.out.println(message);
+            try {
+                return scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input, expecting number");
+            }
+        }
+    }
 
-	public static String readStringValue(String message) {
-		String result;
-		while (true) {
-			final Scanner scanner = new Scanner(System.in);
-			System.out.println(message);
-			result = scanner.nextLine();
-			break;
-		}
-		return result;
-	}
+    public String readStringValue(String message) {
+        String result = null;
+        while (true) {
+            final Scanner scanner = new Scanner(System.in);
+            System.out.println(message);
+            result = scanner.nextLine();
+            break;
+        }
+        return result;
+    }
 
-	static public boolean readBooleanValue(String message) {
-		while (true) {
-			final Scanner scanner = new Scanner(System.in);
-			System.out.println(message);
-			try {
-				return scanner.nextBoolean();
-			} catch (InputMismatchException e) {
-				System.out.println("Invalid input, expecting boolean");
-			}
-		}
-	}
+    public boolean readBooleanValue(String message) {
+        while (true) {
+            final Scanner scanner = new Scanner(System.in);
+            System.out.println(message);
+            try {
+                return scanner.nextBoolean();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input, expecting boolean");
+            }
+        }
+    }
 
 }
