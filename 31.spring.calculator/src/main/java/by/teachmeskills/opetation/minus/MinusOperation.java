@@ -1,7 +1,9 @@
 package by.teachmeskills.opetation.minus;
 
 import by.teachmeskills.opetation.AbstractSimpleOperation;
+import org.springframework.stereotype.Component;
 
+@Component("operation-")
 public class MinusOperation extends AbstractSimpleOperation {
 
 	@Override
