@@ -1,7 +1,6 @@
 package by.train.zoo.model;
 
 import by.train.living.model.LivingCreature;
-import jdk.internal.org.objectweb.asm.tree.analysis.SourceValue;
 
 import java.util.ArrayList;
 import java.util.List;

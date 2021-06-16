@@ -7,20 +7,23 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Collection;
-import java.util.Map;
+
 
 @Configuration
 public class Config {
+    @Bean
+    Zoo zoo(ApplicationContext context) {
+        Collection<LivingCreature> values = null;
+        /**
+         *  TODO здесь нужно как-то получить все бины типа LivingCreature из contextа
+         */
+        values = context.getBeansOfType(LivingCreature.class).values();
 
-	@Bean
-	Zoo zoo(ApplicationContext context) {
-		Collection<LivingCreature> values = null;
-		/**
-		 *  TODO здесь нужно как-то получить все бины типа LivingCreature из contextа
-		 */
-		Zoo zoo = new Zoo();
-		values.forEach(r -> zoo.addAnimal(r));
-		return zoo;
-	}
+
+        Zoo zoo = new Zoo();
+        values.forEach(r -> zoo.addAnimal(r));
+        return zoo;
+    }
+
 
 }

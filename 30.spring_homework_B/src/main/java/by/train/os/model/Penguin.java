@@ -4,4 +4,8 @@ import by.train.living.model.LivingCreature;
 
 //TODO здесь ничего изменять не нужно. Реализуйте конфинг через xml
 public class Penguin implements LivingCreature {
+    @Override
+    public String toString() {
+        return "Penguin is cool";
+    }
 }
