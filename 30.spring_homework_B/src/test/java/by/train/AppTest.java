@@ -41,6 +41,8 @@ public class AppTest {
     @Test
     public void jaguar_factoryBean() {
         JaguarCar car = context.getBean(JaguarCar.class);
+        System.out.println(car);
+        System.out.println(car.getLogo());
         assertTrue(car.getLogo() instanceof Jaguar);
     }
 

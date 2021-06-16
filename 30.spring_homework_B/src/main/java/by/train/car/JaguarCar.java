@@ -9,14 +9,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class JaguarCar {
 
+
 	private Object logo;
 
 	public Object getLogo() {
 		return logo;
 	}
 
-	@Autowired
-	@Qualifier("jaguar")
+@Autowired
 	public void setLogo(Jaguar logo) {
 		this.logo = logo;
 	}

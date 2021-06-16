@@ -11,13 +11,17 @@ import by.train.zoo.Config;
 import org.springframework.context.annotation.*;
 
 @Configuration
-@ComponentScan(basePackages = {"by.train.browser", "by.train.car"}
+@ComponentScan(basePackages ={
+        "by.train.browser", "by.train.car","by.train.animal.model"},
+        excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX,
+        pattern = "by.train.animal.model.domestic.*")
+
         /* TODO нужно добавить сюда нужные конфигурации
          *  при этом исключить пакет by.train.animal.model.domestic
          */
 )
 
-@Import(value = {Config.class, by.train.animal.Config.class
+@Import(value = {Config.class
 
 //		TODO нужно добавить сюда нужные конфигурации
 })
