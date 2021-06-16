@@ -1,12 +1,5 @@
 package by.train;
 
-import by.train.animal.model.Fox;
-import by.train.animal.model.domestic.Horse;
-import by.train.animal.model.domestic.Pig;
-import by.train.animal.model.rare.Jaguar;
-import by.train.bpp.PostProcessorConfig;
-import by.train.browser.Firefox;
-import by.train.car.JaguarCar;
 import by.train.zoo.Config;
 import org.springframework.context.annotation.*;
 

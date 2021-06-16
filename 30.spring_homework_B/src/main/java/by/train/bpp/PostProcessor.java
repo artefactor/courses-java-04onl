@@ -3,7 +3,6 @@ package by.train.bpp;
 import by.train.animal.model.Lion;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 /**

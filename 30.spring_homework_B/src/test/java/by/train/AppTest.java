@@ -1,11 +1,8 @@
 package by.train;
 
 import by.train.animal.model.Fox;
-import by.train.animal.model.Meat;
-import by.train.animal.model.rare.Jaguar;
 import by.train.animal.model.Lion;
-import by.train.animal.model.Wolf;
-import by.train.bpp.PostProcessorConfig;
+import by.train.animal.model.rare.Jaguar;
 import by.train.browser.Firefox;
 import by.train.car.JaguarCar;
 import by.train.os.Linux;
