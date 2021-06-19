@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<!--    <link rel="stylesheet" href="resources/css/style.css">-->
+    <link rel="stylesheet" href="../resources/css/style.css">
+</head>
+<body>
+<p th:text="${fruit}"/>
+
+
+<a href="/${fruitlist}">fruits list</a>
+<a href="/${fruitlistmvc}">fruits list</a>
+<a th:href="@{/{id}(id=${fruitlist})}">FD</a>
+<a th:href="@{/{id}(id=${fruitlistmvc})}">Flm</a>
+<a th:href="@{/{id}(id=${fruitlistmvc})}">FLM</a>
+
+<br>
+<hr>
+<br>
+<a href="index.html">index</a>
+<a href="jquery.html">jquery</a>
+</body>
+</html>

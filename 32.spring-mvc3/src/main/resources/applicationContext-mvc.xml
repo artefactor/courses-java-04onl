@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+        xmlns:beans="http://www.springframework.org/schema/beans"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Scans within the base package of the application for @Component classes to configure as beans -->
+    <context:component-scan base-package="by.tms.spring.controller"/>
+
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <beans:bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            <beans:bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <mvc:resources mapping="/index.html" location="/static/"/>
+    <!--  Here doens't work. The template is used                          -->
+    <mvc:resources mapping="/jquery.html" location="/static/"/>
+
+    <!-- **************************************************************** -->
+    <!--  THYMELEAF-SPECIFIC ARTIFACTS                                    -->
+    <!--  TemplateResolver <- TemplateEngine <- ViewResolver              -->
+    <!-- **************************************************************** -->
+    <beans:bean id="viewResolver" class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+        <beans:property name="order" value="1"/>
+        <beans:property name="characterEncoding" value="UTF-8"/>
+        <beans:property name="templateEngine" ref="templateEngine"/>
+    </beans:bean>
+
+    <beans:bean id="templateEngine"
+                class="org.thymeleaf.spring4.SpringTemplateEngine">
+        <beans:property name="templateResolvers">
+            <beans:set>
+                <beans:ref bean="templateResolver"/>
+            </beans:set>
+        </beans:property>
+    </beans:bean>
+
+    <beans:bean id="templateResolver"
+                class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+        <beans:constructor-arg index="0" ref="servletContext"/>
+        <beans:property name="prefix" value="/WEB-INF/classes/templates/"/>
+        <beans:property name="suffix" value=".html"/>
+        <beans:property name="templateMode" value="HTML5"/>
+
+        <beans:property name="characterEncoding" value="UTF-8"/>
+        <beans:property name="order" value="2"/>
+        <beans:property name="cacheable" value="false"/>
+    </beans:bean>
+
+
+
+</beans:beans>

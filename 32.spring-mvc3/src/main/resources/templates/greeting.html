@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/style.css">
+</head>
+<body>
+<p th:text="'Hello, ' + ${name} + '!'"/>
+<p th:text="${message}"/>
+
+beanDefinitionCount:
+<p th:text="${beanDefinitionCount}">
+</p>
+
+<p th:text="${service}">
+</p>
+
+<table>
+    <tr>
+        <th>
+            <h2> beanDefinitionNames Root </h2>
+            <p th:text="${beanDefinitionNamesRoot.length}">
+            </p>
+        </th>
+        <th>
+            <h2> beanDefinitionNames </h2>
+            <p th:text="${beanDefinitionNames.length}">
+            </p>
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <table>
+                <th:block th:each="bean : ${beanDefinitionNamesRoot}">
+                    <tr>
+                        <td th:text="${bean}">...</td>
+                    </tr>
+                </th:block>
+            </table>
+
+        </td>
+        <td>
+            <table>
+                <th:block th:each="bean : ${beanDefinitionNames}">
+                    <tr>
+                        <td th:text="${bean}">...</td>
+                    </tr>
+                </th:block>
+            </table>
+        </td>
+    </tr>
+
+</table>
+
+<a href="index.html">index</a>
+<a href="jquery.html">jquery</a>
+<a href="fruits">fruits</a>
+</body>
+</html>
