@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script type="text/javascript" src="resources/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $(".btn-slide").click(function () {
+                $("#panel").slideToggle("slow");
+                $(this).toggleClass("active");
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $('#example-rest').click(function(){
+                // $(this).load('greetingrest');
+                alert("ajax call");
+                $(this).load('greetingrest');
+            })
+        });
+    </script>
+
+    <style type="text/css">
+        body {
+            margin: 0 auto;
+            padding: 0;
+            width: 570px;
+            font: 75%/120% Arial, Helvetica, sans-serif;
+        }
+        a:focus {
+            outline: none;
+        }
+        #panel {
+            background: #754c24;
+            height: 200px;
+            display: none;
+        }
+        .slide {
+            margin: 0;
+            padding: 0;
+            border-top: solid 4px #422410;
+            background: url(resources/images/btn-slide.gif) no-repeat center top;
+        }
+        .btn-slide {
+            background: url(resources/images/white-arrow.gif) no-repeat right -50px;
+            text-align: center;
+            width: 144px;
+            height: 31px;
+            padding: 10px 10px 0 0;
+            margin: 0 auto;
+            display: block;
+            font: bold 120%/100% Arial, Helvetica, sans-serif;
+            color: #fff;
+            text-decoration: none;
+        }
+        .active {
+            background-position: right 12px;
+        }
+        #example-rest{
+            background-color: aqua;
+            margin-top: 20px;
+            margin-bottom: 50px;
+            height: 35px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="panel">
+    <!-- you can put content here -->
+</div>
+<p class="slide">
+    <a href="#" class="btn-slide">Slide Panel</a>
+</p>
+
+
+<p th:text="'Hello, ' + ${name} + '!'"/>
+<p th:text="${message}"/>
+
+<div class="example cursor" id="example-rest">Click to get from rest</div>
+
+
+<a href = "index.html">index</a>
+<a href = "greeting">greeting</a>
+<a href = "fruits">fruits</a>
+
+</body>
+</html>

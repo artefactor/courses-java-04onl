@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="resources/css/style.css">
+<!--    <link rel="stylesheet" href="../resources/css/style.css">-->
+</head>
+<body>
+<p th:text="${fruits}"/>
+
+<table>
+<tr th:each="fruit,rowStat : ${fruits}">
+    <td th:text="${rowStat.count}">1</td>
+    <td th:text ="${fruit}" >orange</td>
+    <td>
+        <a th:href="@{/fruits/{id}(id=${rowStat.count-1})}">
+            <span th:text="${fruit}" th:remove="tag"></span>
+        </a>
+    </td>
+
+    <td>
+    <form action="#" th:action="@{/fruits/{id}(id=${rowStat.count-1})}" th:object="${fruit}"  method="post">
+        <input type="hidden" name="_method" value="DELETE"/>
+        <input type="hidden" name="id" th:value="${rowStat.count-1}"/>
+        <input type="submit" value="Delete">
+    </form>
+    <td/>
+</tr>
+</table>
+
+<p>Add new</p>
+<form action="#" th:action="@{/fruits}" th:object="${fruit}" method="post">
+    <label >
+<!--        <input type="text" th:field="*{name}" />-->
+        <input type="text" name="name" />
+    </label>
+    <label>
+        <input type="text" name="price" />
+    </label>
+    <input type="submit" value="Submit" />
+</form>
+
+<a href = "fruits">fruits list</a>
+
+
+<br>
+<hr>
+<br>
+<a href = "index.html">index</a>
+<a href = "jquery.html">jquery</a>
+</body>
+</html>
