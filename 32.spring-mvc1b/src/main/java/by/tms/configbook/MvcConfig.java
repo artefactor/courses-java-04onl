@@ -2,6 +2,7 @@ package by.tms.configbook;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.InjectionPoint;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.context.ServletContextAware;
@@ -29,7 +30,10 @@ public class MvcConfig
 	//https://stackoverflow.com/questions/14895728/cant-autowire-servletcontext
 	private ServletContext servletContext;
 
-
+	@Bean
+	public Logger logger(InjectionPoint injectionPoint) {
+		return LogManager.getLogger(injectionPoint.getDeclaredType());
+	}
 
 	@Bean
 	@Description("Thymeleaf View Resolver")
@@ -101,7 +105,8 @@ public class MvcConfig
 	@Override
 	public void configureDefaultServletHandling(
 			DefaultServletHandlerConfigurer configurer) {
-//		configurer.enable();
+		// включить - выключить и посмотреть как отличаются ссылки
+		configurer.enable();
 	}
 
 	@Override

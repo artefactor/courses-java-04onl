@@ -4,12 +4,21 @@ import by.tms.spring.model.Fruit;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ClassUtils;
+import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/*
+ TODO сделать по аналогии свой контроллер:
+  1) список объектов
+  2) добавление объекта ( по кнопке - на отдельной странице - потом переброс на список)
+  3) редактирование ( по ссылке - на отдельной странице - потом переброс на список)
+  4) удаление  (из списка)
+
+ */
 /**
  *
  */
@@ -67,9 +76,10 @@ public class FruitController {
         return "redirect:/fruits";
     }
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(BindException.class)
     public String handleException(Exception e, Model model) {
         model.addAttribute("error", "AAAA, VSE PROPALO" + new Date());
-        return ClassUtils.getShortName(e.getClass());
+        model.addAttribute("message", e.getMessage());
+        return "error";
     }
 }
