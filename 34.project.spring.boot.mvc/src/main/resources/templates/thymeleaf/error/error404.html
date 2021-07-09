@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Not found</title>
+</head>
+<body>
+<div class="container-fluid">
+    <br><br><br>
+    <div class="row justify-content-center align-self-center">
+        <div class="col-md-4">
+            <div th:if="${not #strings.isEmpty(errorMessage)}" class="alert alert-danger" role="alert">
+                ${message}
+            </div>
+            <a href="/"><button class="btn btn-primary">Home page</button></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

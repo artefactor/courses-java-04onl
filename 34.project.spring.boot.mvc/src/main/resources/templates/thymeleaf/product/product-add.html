@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add new product</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container-fluid">
+    <div th:if="${not #strings.isEmpty(message)}" class="row row justify-content-center align-self-center">
+        <div class="col-md-6">
+            <div class="alert alert-danger" role="alert">
+                ${message}
+            </div>
+        </div>
+    </div>
+    <div class="row row justify-content-center align-self-center">
+        <div class="col-md-6">
+            <form method="POST" action="#" th:action="@{/products/add}" th:object="${product}">
+                <table class="table">
+                    <tr>
+                        <td><label for="title">Title</label></td>
+                        <td><input type="text" id="title" th:field="*{title}"/></td>
+                        <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Error</td>
+                    </tr>
+                    <tr>
+                        <td><label for="description">Description</label></td>
+                        <td><input type="text" id="description" th:field="*{description}"/></td>
+                        <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Error</td>
+                    </tr>
+                    <tr>
+                        <td><label for="price">Price</label></td>
+                        <td><input type="text" id="price" th:field="*{price}"/></td>
+                        <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Error</td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit" class="btn btn-success" th:text="#{button.save}">Save</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/common :: scripts" />
+</body>
+</html>
