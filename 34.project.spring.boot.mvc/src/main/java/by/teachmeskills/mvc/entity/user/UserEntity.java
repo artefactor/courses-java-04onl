@@ -2,7 +2,7 @@ package by.teachmeskills.mvc.entity.user;
 
 import by.teachmeskills.mvc.entity.AbstractEntity;
 import by.teachmeskills.mvc.entity.role.RoleEntity;
-import by.teachmeskills.mvc.repository.converter.password.PasswordAttributeConverter;
+//import by.teachmeskills.mvc.repository.converter.password.PasswordAttributeConverter;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,7 +29,7 @@ public class UserEntity extends AbstractEntity {
     private String login;
 
     @Size(min = 4, max = 36)
-    @Convert(converter = PasswordAttributeConverter.class)
+//    @Convert(converter = PasswordAttributeConverter.class)
     private String password;
 
     @Column(name = "created_on")
