@@ -7,7 +7,7 @@
     <groupId>by.teachmeskills</groupId>
     <artifactId>spring_mvc</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>lesson32.spring.mvc</name>
+    <name>33.project.spring.mvc</name>
     <packaging>war</packaging>
 
     <properties>

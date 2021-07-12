@@ -24,6 +24,10 @@
 
         <module>31.spring.calculator</module>
 
+        <module>33.project.spring.mvc</module>
+        <module>34.project.spring.boot.mvc</module>
+        <module>36.project.spring.rest</module>
+
         <module>module4</module>
         <module>module5</module>
     </modules>

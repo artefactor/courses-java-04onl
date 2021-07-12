@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>by.teachmeskills</groupId>
-	<artifactId>lesson37.spring.rest</artifactId>
+	<artifactId>36.project.spring.rest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>lesson37.spring.rest</name>
 	<description>REST API app</description>

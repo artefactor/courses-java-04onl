@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>by.teachmeskills</groupId>
-	<artifactId>lesson36.spring.boot.mvc</artifactId>
+	<artifactId>34.project.spring.boot.mvc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>lesson36.spring.boot.mvc</name>
 	<description>Demo project for Spring Boot MVC</description>
