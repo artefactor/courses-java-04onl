@@ -4,14 +4,14 @@ jdbc:
 #  username: root
 #  password: 9366
   driver: org.postgresql.Driver
-  url: jdbc:postgresql://localhost:5432/tms?useSSL=false
+  url: jdbc:postgresql://localhost:5432/tms_spring?useSSL=false
   username: postgres
   password: root
 
 hibernate:
   hbm2ddl:
-    auto: validate
-#    auto: create
+#    auto: validate
+    auto: create
 #  dialect: org.hibernate.dialect.MySQL5Dialect
   dialect: org.hibernate.dialect.PostgreSQL9Dialect
   connection:

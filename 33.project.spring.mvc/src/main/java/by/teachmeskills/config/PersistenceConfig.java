@@ -5,8 +5,13 @@ import java.util.Arrays;
 import java.util.Properties;
 import java.util.stream.StreamSupport;
 import javax.sql.DataSource;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.InjectionPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.AbstractEnvironment;
@@ -25,6 +30,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @PropertySource(name = "jdbcProperties", value = "classpath:persistence.yaml", factory = YamlPropertySourceFactory.class)
+@ComponentScan("by.teachmeskills.persistence")
 public class PersistenceConfig {
 
     private Environment env;
@@ -34,7 +40,7 @@ public class PersistenceConfig {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
 
-        entityManagerFactoryBean.setPackagesToScan("by.teachmeskills.entity");
+        entityManagerFactoryBean.setPackagesToScan("by.teachmeskills.persistence.entity");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);

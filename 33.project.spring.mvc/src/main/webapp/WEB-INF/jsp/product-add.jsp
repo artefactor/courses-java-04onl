@@ -45,6 +45,10 @@
             </form:form>
         </div>
     </div>
+
+    <div class="row row justify-content-center align-self-center">
+        <a href="..">Back to products</a>
+    </div>
 </div>
 
 

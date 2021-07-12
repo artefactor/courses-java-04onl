@@ -14,17 +14,9 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@ComponentScan
-//        ({"by.teachmeskills.controller",
-//                "by.teachmeskills.se"
-//        })
+@ComponentScan("by.teachmeskills.mvc")
 @EnableWebMvc
 public class WebAppConfig implements WebMvcConfigurer {
-
-//    @Bean
-//    public Logger logger(InjectionPoint injectionPoint) {
-//        return LogManager.getLogger(injectionPoint.getDeclaredType());
-//    }
 
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver() {

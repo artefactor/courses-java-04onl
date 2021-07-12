@@ -1,6 +1,6 @@
 package by.teachmeskills.service.product;
 
-import by.teachmeskills.model.product.ProductModel;
+import by.teachmeskills.service.model.product.ProductModel;
 import java.util.List;
 
 public interface IProductService {

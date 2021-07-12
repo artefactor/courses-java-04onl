@@ -1,11 +1,11 @@
 package by.teachmeskills.service.product.impl;
 
-import by.teachmeskills.converter.IConverter;
-import by.teachmeskills.dao.exception.DAOException;
-import by.teachmeskills.dao.product.ProductDAO;
-import by.teachmeskills.entity.product.ProductEntity;
-import by.teachmeskills.exception.NotFoundException;
-import by.teachmeskills.model.product.ProductModel;
+import by.teachmeskills.persistence.dao.exception.DAOException;
+import by.teachmeskills.persistence.dao.product.ProductDAO;
+import by.teachmeskills.persistence.entity.product.ProductEntity;
+import by.teachmeskills.service.exception.NotFoundException;
+import by.teachmeskills.service.converter.IConverter;
+import by.teachmeskills.service.model.product.ProductModel;
 import by.teachmeskills.service.AbstractService;
 import by.teachmeskills.service.ServiceException;
 import by.teachmeskills.service.product.IProductService;
