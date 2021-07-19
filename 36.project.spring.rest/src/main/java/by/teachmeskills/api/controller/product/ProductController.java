@@ -32,6 +32,7 @@ public class ProductController {
 
     @PostMapping
     @Operation(summary = "Create new product", description = "Create new product"
+            // not needed now
 //            ,security = @SecurityRequirement(name = "basicAuth")
     )
     @ResponseStatus(HttpStatus.CREATED)

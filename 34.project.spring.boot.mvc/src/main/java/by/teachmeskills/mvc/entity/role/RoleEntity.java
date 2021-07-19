@@ -15,6 +15,13 @@ public class RoleEntity extends AbstractEntity {
     @NotNull
     private RoleNameEnum name;
 
+    public RoleEntity() {
+    }
+
+    public RoleEntity(RoleNameEnum name) {
+        this.name = name;
+    }
+
     public RoleNameEnum getName() {
         return name;
     }
