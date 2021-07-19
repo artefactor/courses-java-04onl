@@ -15,6 +15,16 @@ public class RegistrationModel {
     @NotBlank
     private String repeatPassword;
 
+    public static RegistrationModel fromLogin(String username) {
+        RegistrationModel newUser = new RegistrationModel();
+        newUser.setFirstName(username);
+        newUser.setLastName(username);
+        newUser.setLogin(username);
+        newUser.setPassword(username);
+        newUser.setRepeatPassword(username);
+        return newUser;
+    }
+
     public String getFirstName() {
         return firstName;
     }

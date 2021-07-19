@@ -12,6 +12,9 @@ import by.teachmeskills.mvc.service.product.IProductService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,6 +30,10 @@ public class ProductServiceImpl extends AbstractService implements IProductServi
 
     @Override
     public ProductModel getProductById(Long id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object details = authentication.getDetails();
+        boolean authenticated = authentication.isAuthenticated();
+
         Optional<ProductEntity> entityOptional = productDAO.getEntity(id);
         return entityOptional
             .map(productEntity -> productConverter.convertToModel(productEntity))
