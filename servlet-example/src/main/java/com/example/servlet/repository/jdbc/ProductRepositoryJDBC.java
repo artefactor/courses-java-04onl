@@ -1,23 +1,23 @@
-package com.example.servlet.repository;
+package com.example.servlet.repository.jdbc;
 
 import com.example.servlet.entity.ProductEntity;
+import com.example.servlet.repository.ProductRepository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductRepositoryOld {
+public class ProductRepositoryJDBC implements ProductRepository {
 
-
-    private ProductRepositoryOld() {
+    private ProductRepositoryJDBC() {
 
     }
 
     public static class ProductRepositoryHolder {
-        public static final ProductRepositoryOld INSTANCE = new ProductRepositoryOld();
+        public static final ProductRepositoryJDBC INSTANCE = new ProductRepositoryJDBC();
     }
 
-    public static ProductRepositoryOld getInstance() {
+    public static ProductRepositoryJDBC getInstance() {
         return ProductRepositoryHolder.INSTANCE;
     }
 

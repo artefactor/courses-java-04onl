@@ -7,6 +7,9 @@
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
 <body>
+<a href="admin"> Admin</a>
+<a href="login"> Login</a>
+<a href="products"> Add product</a>
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col-8">
