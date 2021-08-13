@@ -2,7 +2,7 @@ package com.example.servlet.servlet;
 
 import com.example.servlet.ServletTest;
 import com.example.servlet.entity.ProductEntity;
-import com.example.servlet.repository.ProductRepository;
+import com.example.servlet.repository.hibernate.ProductHibernateRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
@@ -26,7 +26,7 @@ class ProductServletTest extends ServletTest {
     private ProductServlet productServlet;
 
     @Mock
-    private ProductRepository productRepository;
+    private ProductHibernateRepository productRepository;
 
     @Mock
     private ServletConfig config;

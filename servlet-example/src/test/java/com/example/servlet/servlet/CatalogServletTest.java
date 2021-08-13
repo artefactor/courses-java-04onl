@@ -3,22 +3,15 @@ package com.example.servlet.servlet;
 import com.example.servlet.ServletTest;
 import com.example.servlet.data.ProductsArgumentsProvider;
 import com.example.servlet.entity.ProductEntity;
-import com.example.servlet.repository.ProductRepository;
-import org.junit.jupiter.api.BeforeEach;
+import com.example.servlet.repository.hibernate.ProductHibernateRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.ArgumentsSource;
-import org.junit.jupiter.params.provider.EnumSource;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -36,7 +29,7 @@ class CatalogServletTest extends ServletTest {
     private CatalogServlet catalogServlet;
 
     @Mock
-    private ProductRepository productRepository;
+    private ProductHibernateRepository productRepository;
 
     @ParameterizedTest
     @ArgumentsSource(ProductsArgumentsProvider.class)
