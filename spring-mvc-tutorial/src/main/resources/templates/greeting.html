@@ -5,6 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text="'nice Very Hello, ' + ${name} + '!'" />
+<p th:text="'UPDATED  Form docker nice Very Hello, ' + ${name} + '!'" />
+<table>
+<tr th:each="user,rowStat : ${all}">
+    <td th:text="${rowStat.count}">1</td>
+    <td th:text ="${user}" >user</td>
+</tr>
+</table>
 </body>
 </html>
